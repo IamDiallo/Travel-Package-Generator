@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+	xmlns:context="http://www.springframework.org/schema/context">
+
+
+	<bean id="offrecreator" class="business.simulation.OffreCreator">
+		<property name="offreEntry" ref="entry" />
+		<property name="excursionBuilder" ref="builder" />
+		<property name="fetchData" ref="fetch" />
+	</bean>
+
+	<bean id="excursionBuilder" class="business.simulation.ExcursionBuilder" />
+
+	<bean id="entry" class="business.simulation.OffreEntry">
+		<property name="confort">
+			<value>"1"</value>
+		</property>
+		<property name="priceMin">
+			<value>20.0</value>
+		</property>
+		<property name="priceMax">
+			<value>50.0</value>
+		</property>
+		<property name="siteType">
+			<value>"historique"</value>
+		</property>
+		<property name="nbDays">
+			<value>2</value>
+		</property>
+		<property name="keywords">
+			<value>"est"</value>
+		</property>
+	</bean>
+	
+	<bean id="bdeinterfaceDao" class="dao.BdeInterface"
+		abstract="true" scope="prototype" />
+
+	<bean id="builder" class="business.simulation.ExcursionBuilder" />
+	<bean id="fetch" class="business.simulation.FetchData" />
+	
+
+	<bean id="location" class="business.data.Location"
+		abstract="true" scope="prototype" />
+	<bean id="transport" class="business.data.Transport"
+		abstract="true" scope="prototype" />
+
+	<bean id="bus" class="business.data.Bus"
+		parent="transport">
+	</bean>
+	<bean id="bateau" class="business.data.Boat"
+		parent="transport">
+	</bean>
+	<bean id="pied" class="business.data.Walk"
+		parent="transport">
+	</bean>
+
+	<bean id="Hotel" class="business.data.Hotel"
+		parent="location">
+	</bean>
+	<bean id="Site" class="business.data.Site"
+		parent="location">
+	</bean>
+
+
+	<aop:config>
+		<aop:pointcut id="hotelPointcut"
+			expression="execution(* business.simulation.OffreCreator.chooseHotel(..))" />
+		<aop:aspect id="hotelReporterAspect" ref="hotelReporter">
+			<aop:before method="hotelEntry"
+				pointcut-ref="hotelPointcut" />
+		</aop:aspect>
+	</aop:config>
+	<bean id="hotelReporter" class="business.spring.AOPReporter" />
+
+
+
+</beans>

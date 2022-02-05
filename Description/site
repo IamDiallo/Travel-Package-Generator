@@ -1,0 +1,26 @@
+INSERT INTO site (name,type,isEdge,idIle,price,x,y) 
+VALUES ('Rice Terrace','activite',0,1,45.72,-8.4466877,115.1796369),
+      ('Pantai Pasir','activite',1,1,1.23,-9.1387254,115.1367167),
+      ('Museum Rudana','activite',0,1,3.45,-8.5967078,115.1701879),
+      ('Dream Museum','historique',0,1,9.72,-8.66731,115.154395),
+      ('Surf course','activite',1,1,23.18,-8.7260646,115.1365132),
+      ('Elephant ride','activite',0,1,18.08,-8.7258917,114.0509266),
+      ('Pura Dalem Ped','historique',0,4,1.23,-8.6778471,115.3781914),
+      ('Angels Billabong','activite',1,4,90,-8.7031349,115.5122014),
+      ('Plongee manta','activite',1,4,275.66,-8.6908767,115.4733756),
+      ('Goa Giri Putri','historique',0,4,6.12,-8.7089462,115.5160769),
+      ('Banjar nyuh harbour','activite',1,4,13.96,-8.6781526,115.4862632),
+      ('Pura Puncak Mundi','historique',0,4,30.12,-8.7321322,115.3841578),
+      ('Pasih Uug Beach','activite',1,4,52.6,-8.7026727,115.4114206),
+      ('Ocean Swing','activite',1,4,22.64,-8.7791817,115.6135165),
+      ('Crystal bay','activite',1,4,2,-8.7154702,115.4550874),
+      ('Paluang Cliff','historique',1,4,3,-8.7536531,115.4068635),
+      ('Pura Paluang','historique',0,4,15.29,-8.7537039,115.4081945),
+      ('Seganing Waterfall','activite',1,4,114,-8.7609487,115.3467754),
+      ('Peguyangan Waterfall','historique',1,4,1.28,-8.6517428,115.3364926),
+      ('Saren Cliff Point','activite',1,4,0.60,-8.7744145,115.5001633),
+
+
+
+      
+      

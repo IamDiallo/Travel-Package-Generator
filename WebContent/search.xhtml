@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+/* Header/Logo Title */
+.header {
+  padding: 10px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 20px;
+}
+
+
+body{
+font-family: Arial, Helvetica, sans-serif;
+font-size: 15px;
+}
+	
+ input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  font-size:15px;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #1abc9c;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+  font-size:15px;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 65%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+	</style>
+<h:head>
+	<title>Bali</title>
+</h:head>
+<h:body>
+	
+	<div class="header">
+      <h1>Welcome to Bali</h1>
+      <p>Please enter values for simulation parameters</p>
+    </div>
+		<h:form>
+		
+			<div class="container">
+			    <div class="row">
+				    <div class="col-25">
+				       <label>Rythm types:</label>
+				    </div>
+					<div class="col-75">
+						<h:selectOneMenu value="#{searchBean.rythme}">
+					      <f:selectItem itemValue = "1" itemLabel = "Haut Rythme" /> 
+                          <f:selectItem itemValue = "0" itemLabel = "Bas Rythme" />  
+				        </h:selectOneMenu>
+					</div>
+			    </div>
+			    
+			    <div class="row">
+				    <div class="col-25">
+				       <label>Budget Min:</label>
+				    </div>
+					<div class="col-25">
+						<h:inputText id="budgetMin" value="#{searchBean.priceMin}" label="Minimum Budget :" >
+			            </h:inputText>
+					</div>
+					<div class="col-25">
+		                <label> Budget Max:</label>
+		            </div>
+		            <div class="col-25">
+		                <h:inputText id="budgetMax" value="#{searchBean.priceMax}" label="Maximum Budget :" >
+			            </h:inputText>  
+		            </div>
+			   </div>
+		       
+		        <div class="row">
+				      <div class="col-25">
+				          <label>Trip duration:</label>
+				      </div>
+				      <div class="col-75">
+					       <h:inputText value="#{searchBean.nbDays}" />
+		              </div>
+			    </div>
+			    
+			    <div class="row">
+				    <div class="col-25">
+				       <label>Site types:</label>
+				    </div>
+					<div class="col-75">
+						<h:selectOneMenu value="#{searchBean.siteType}">
+							<f:selectItem itemValue = "" itemLabel = "NeverMind" /> 
+                            <f:selectItem itemValue = "activite" itemLabel = "Loisir" />
+                            <f:selectItem itemValue = "historique" itemLabel = "Historique" />  
+						</h:selectOneMenu>
+					</div>
+			    </div>
+			
+			
+				<div class="row">
+				      <div class="col-25">
+				          <label>Key words :</label>
+				      </div>
+				      <div class="col-75">
+					       <h:inputText value="#{searchBean.keywords}" />
+		              </div>
+				</div>
+			
+		       <div class="row">
+		       <div class="col-75">
+		            <h:commandButton value="Search" action="#{searchBean.start}" align="center" class="button"/>
+		       </div>
+		       </div>
+		        
+			</div>
+	     
+		</h:form>
+</h:body>
+</html>

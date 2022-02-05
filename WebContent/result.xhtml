@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<style>
+* {
+	box-sizing: border-box;
+}
+
+/* Header/Logo Title */
+.header {
+	padding: 10px;
+	text-align: center;
+	background: #1abc9c;
+	color: white;
+	font-size: 20px;
+}
+
+.header2 {
+	text-align: center;
+	color: 1abc9c;
+	font-size: 15px;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+}
+
+.container {
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	padding: 20px;
+}
+
+.container {
+	border-radius: 5px;
+	background-color: whitesmoke;
+}
+
+.col-25 {
+	float: left;
+	width: 25%;
+	margin-top: 6px;
+}
+
+.col-50 {
+	float: left;
+	width: 50%;
+	margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+</style>
+<h:head>
+	<title>Bali</title>
+</h:head>
+<h:body>
+
+	<div class="header">
+		<h1>Voici Votre Offre</h1>
+		<!-- <p>Please enter values for simulation parameters</p> -->
+	
+		<p class="header">Le cout total de votre Offre: 
+			<h:outputText value="#{excursionBean.offre.price}" >
+				<f:convertNumber type="number" minFractionDigits="2" pattern="#0.00" />
+			</h:outputText>
+			€
+		</p>
+	</div>
+	<div class="container">
+		<ul>
+			<ui:repeat value="#{excursionBean.offre.excursions}" var="excursion">
+				<div class=" container col-50">
+					<li>
+						<h3 class="header">Jour
+							:#{excursion.days}</h3>
+						<h3 class="header">Excursion : Prix Total:
+							<h:outputText value="#{excursion.excursionPrice}" >
+								<f:convertNumber type="number" minFractionDigits="2" pattern="#0.00" />
+							</h:outputText>
+							€
+						</h3>
+					</li>
+
+					<h3 class="header2">Trajet A Suivre</h3>
+					<ul>
+						<ui:repeat value="#{excursion.trajets}" var="trajet">
+							<li><strong><h:outputText
+										value="#{trajet.source.name}" /> ==> <h:outputText
+										value="Destination:  #{trajet.destination.name}" /></strong>
+								<p>Moyen de Transport: #{trajet.transport}</p>
+								<p>Cout de Trajet(Transports + Activités): 
+									<h:outputText value="#{trajet.price}">
+										<f:convertNumber type="number" minFractionDigits="2" pattern="#0.00" />€
+									</h:outputText> €
+								</p></li>
+						</ui:repeat>
+					</ul>
+				</div>
+			</ui:repeat>
+		</ul>
+	</div>
+</h:body>
+</html>
